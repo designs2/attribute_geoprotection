@@ -80,7 +80,7 @@ class MetaModelAttributeGeoProtection extends MetaModelAttributeComplex
 	
 	public function getFilterOptions($arrIds = array())
 	{
-		FB::log('getFilterOPtions');
+
 		$arrReturn = array();
 
 		return $arrReturn;
@@ -147,7 +147,7 @@ class MetaModelAttributeGeoProtection extends MetaModelAttributeComplex
 	
 	public function getSelectedCountries()
 	{
-		FB::log('getSelectedCountries');
+
 		$objDB = Database::getInstance();
 		$objValue = $objDB->prepare('SELECT geoprotection FROM tl_metamodel_attribute WHERE id = ?')->limit(1)->execute($this->get('id'));
 		$arrTmp = deserialize($objValue->geoprotection);
