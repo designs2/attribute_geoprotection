@@ -2,8 +2,8 @@
 /**
  * PHP version 5
  * @package	MetaModelsGeoportection
- * @copyright	MEN AT WORK
- * @license	private
+ * @copyright  The MetaModels team.
+ * @license    LGPL.
  * @filesource
  */
 if (!defined('TL_ROOT'))
