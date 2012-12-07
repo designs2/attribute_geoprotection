@@ -13,15 +13,21 @@ class MetaModelFilterSettingGeoprotection extends MetaModelFilterSetting {
 		$objAttribute = $this->getMetaModel()->getAttributeById($this->get('gp_attr_id'));
 		if ($objAttribute) {
 			$objGeo = Geolocation::getInstance();
-			$strCountry = $objGeo->getUserGeolocation()->getCountryShort();
+			$arrCountry = $objGeo->getUserGeolocation()->getCountriesShort();
 			//set 'no_country' if no country was found
-			$strCountry = ($strCountry) ? '%'.$strCountry.'%' : '%xx%';
+			$arrCountry = ($arrCountry) ? $arrCountry : array('xx');
 			
+            //build query string part
+			foreach ($arrCountry as $k => $val)
+			{
+				$arrCountry[$k] = "find_in_set ('$arrCountry[$k]', countries)";
+			}
+            
 			$arrMyFilterUrl = array_slice($arrFilterUrl, 0);
 			$objFilterRule = new MetaModelFilterRuleSimpleQuery(
 					'SELECT item_id FROM tl_metamodel_geoprotection WHERE attr_id = ? AND 
-						((mode = \'gp_show\' AND countries LIKE ?) OR  (mode = \'gp_hide\' AND countries NOT LIKE ?) )',
-					array($this->get('gp_attr_id'), $strCountry, $strCountry),
+						((mode = \'\') OR (mode = \'gp_show\' AND ('.implode(' OR ',$arrCountry).')) OR  (mode = \'gp_hide\' AND NOT ('.implode(' OR ',$arrCountry).')))',
+					array($this->get('gp_attr_id')),
 					'item_id'
 			);
 
