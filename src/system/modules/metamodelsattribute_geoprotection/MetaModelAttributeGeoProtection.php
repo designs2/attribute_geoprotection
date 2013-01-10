@@ -20,7 +20,7 @@ if (!defined('TL_ROOT'))
 
 /**
  * This is the MetaModelAttribute class for handling text fields.
- * 
+ *
  * @package	   MetaModels
  * @subpackage AttributeLangCode
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
@@ -49,10 +49,10 @@ class MetaModelAttributeGeoProtection extends MetaModelAttributeComplex
 		));
 	}
 
-	public function getFieldDefinition()
+	public function getFieldDefinition($arrOverrides = array())
 	{
 
-		$arrFieldDef=parent::getFieldDefinition();
+		$arrFieldDef=parent::getFieldDefinition($arrOverrides);
 		$arrFieldDef['inputType'] = 'multiColumnWizard';
 		$arrFieldDef['eval'] = array('columnFields' => array
 		(
@@ -61,23 +61,23 @@ class MetaModelAttributeGeoProtection extends MetaModelAttributeComplex
 				'inputType'             => 'select',
 				'eval' 			=> array('style'=>'width:180px', 'includeBlankOption' => true, 'columnPos' =>'first'),
 				'options'		=> array('gp_show' => $GLOBALS['TL_LANG']['tl_metamodel_attribute']['gp_show'], 'gp_hide' => $GLOBALS['TL_LANG']['tl_metamodel_attribute']['gp_hide']),
-				
-			    
+
+
 			),
 			'gp_countries' => array
 			(
 				'inputType'             => 'checkbox',
 				'options'		=> $this->getSelectedCountries(),
 				'eval'			=> array('multiple' => true, 'columnPos' =>'first')
-				
- 
+
+
 			),
 
 		), 'buttons' => array('copy' => false, 'delete' => false, 'up' => false, 'down' => false));
 
 		return $arrFieldDef;
 	}
-	
+
 	public function getFilterOptions($arrIds = array())
 	{
 
@@ -85,7 +85,7 @@ class MetaModelAttributeGeoProtection extends MetaModelAttributeComplex
 
 		return $arrReturn;
 	}
-	
+
 	/////////////////////////////////////////////////////////////////
 	// interface IMetaModelAttributeComplex
 	/////////////////////////////////////////////////////////////////
@@ -100,7 +100,7 @@ class MetaModelAttributeGeoProtection extends MetaModelAttributeComplex
 			$objResult = $objDb->prepare('SELECT * FROM tl_metamodel_geoprotection WHERE attr_id = ? AND item_id = ?')
 				->limit(1)
 				->execute($this->get('id'), $id);
-			
+
 			if ($objResult->numRows > 0)
 			{
 				$arrData[$id] = array
@@ -116,7 +116,7 @@ class MetaModelAttributeGeoProtection extends MetaModelAttributeComplex
 
 		return $arrData;
 	}
-	
+
 	public function setDataFor($arrValues)
 	{
 		$objDb = Database::getInstance();
@@ -131,20 +131,20 @@ class MetaModelAttributeGeoProtection extends MetaModelAttributeComplex
 			    'mode'		=> $arrTmp,
 			    'attr_id'		=> $this->get('id'),
 			    'item_id'		=> $id
-			    
+
 			);
 			$objResult = $objDb->prepare('INSERT INTO tl_metamodel_geoprotection %s ON DUPLICATE KEY UPDATE countries = ?, mode = ?')
 				->set($arrData)
 				->execute(implode(',', $arrTmp), $value[0]['gp_mode']);
 		}
 	}
-	
+
 	public function unsetDataFor($arrIds)
 	{
 	    // TODO: unset Data
 
 	}
-	
+
 	public function getSelectedCountries()
 	{
 
@@ -153,9 +153,9 @@ class MetaModelAttributeGeoProtection extends MetaModelAttributeComplex
 		$arrTmp = deserialize($objValue->geoprotection);
 		$objTableHelper = new TableMetaModelsAttributeGeoProtection();
 		return ($objTableHelper->getCountriesByContinent($arrTmp));
-		
+
 	}
-	
+
 }
 
 ?>
