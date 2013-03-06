@@ -15,13 +15,13 @@
  * @filesource
  */
 
-$GLOBALS['METAMODELS']['attributes']['geoprotection'] = array
-(
-	'class' => 'MetaModelAttributeGeoProtection',
-	'image' => 'system/modules/metamodelsattribute_geoprotection/html/geoprotection.png'
-);
+/**
+ * Legends
+ */
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['display_legend']    = 'Darstellungseinstellungen';
 
-$GLOBALS['METAMODELS']['filters']['geoprotection'] = array
-(
-	'class' => 'MetaModelFilterSettingGeoprotection'
-);
+/**
+ * Fields
+ */
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['typeOptions']['geoprotection']    = 'GeoProtection';
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['geoprotection']                   = array('Länder', 'Wählen Sie die konfigurierbaren Länder für den Editor.');

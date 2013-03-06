@@ -1,7 +1,22 @@
 <?php
 
-class MetaModelFilterSettingGeoprotection extends MetaModelFilterSetting {
+/**
+ * The MetaModels extension allows the creation of multiple collections of custom items,
+ * each with its own unique set of selectable attributes, with attribute extendability.
+ * The Front-End modules allow you to build powerful listing and filtering of the
+ * data in each collection.
+ *
+ * PHP version 5
+ * @package     MetaModels
+ * @subpackage  AttributeGeoProtection
+ * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @copyright   The MetaModels team.
+ * @license     LGPL.
+ * @filesource
+ */
 
+class MetaModelFilterSettingGeoprotection extends MetaModelFilterSetting 
+{
 	/**
 	 * 
 	 * @param IMetaModelFilter $objFilter
@@ -17,12 +32,12 @@ class MetaModelFilterSettingGeoprotection extends MetaModelFilterSetting {
 			//set 'no_country' if no country was found
 			$arrCountry = ($arrCountry) ? $arrCountry : array('xx');
 			
-            //build query string part
+			//build query string part
 			foreach ($arrCountry as $k => $val)
 			{
 				$arrCountry[$k] = "find_in_set ('$arrCountry[$k]', countries)";
 			}
-            
+
 			$arrMyFilterUrl = array_slice($arrFilterUrl, 0);
 			$objFilterRule = new MetaModelFilterRuleSimpleQuery(
 					'SELECT item_id FROM tl_metamodel_geoprotection WHERE attr_id = ? AND 
@@ -40,5 +55,3 @@ class MetaModelFilterSettingGeoprotection extends MetaModelFilterSetting {
 	}
 
 }
-
-?>

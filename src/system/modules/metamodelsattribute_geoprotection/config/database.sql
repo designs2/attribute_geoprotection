@@ -19,6 +19,7 @@ CREATE TABLE `tl_metamodel_attribute` (
 -- 
 -- Table `tl_metamodel_geoprotection`
 -- 
+
 CREATE TABLE `tl_metamodel_geoprotection` (
   `id` int(11) unsigned NOT NULL auto_increment,
   `attr_id` int(11) unsigned NOT NULL default '0',

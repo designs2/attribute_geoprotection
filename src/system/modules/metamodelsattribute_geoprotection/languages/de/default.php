@@ -15,13 +15,8 @@
  * @filesource
  */
 
-$GLOBALS['METAMODELS']['attributes']['geoprotection'] = array
-(
-	'class' => 'MetaModelAttributeGeoProtection',
-	'image' => 'system/modules/metamodelsattribute_geoprotection/html/geoprotection.png'
-);
-
-$GLOBALS['METAMODELS']['filters']['geoprotection'] = array
-(
-	'class' => 'MetaModelFilterSettingGeoprotection'
-);
+/**
+ * Fields
+ */
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['gp_hide'] = 'Verstecken';
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['gp_show'] = 'Anzeigen';

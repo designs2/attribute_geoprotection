@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The MetaModels extension allows the creation of multiple collections of custom items,
  * each with its own unique set of selectable attributes, with attribute extendability.
@@ -6,23 +7,19 @@
  * data in each collection.
  *
  * PHP version 5
- * @package	   MetaModels
- * @subpackage AttributeLangCode
- * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
- * @copyright  The MetaModels team.
- * @license    LGPL.
+ * @package     MetaModels
+ * @subpackage  AttributeGeoProtection
+ * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @copyright   The MetaModels team.
+ * @license     LGPL.
  * @filesource
  */
-if (!defined('TL_ROOT'))
-{
-	die('You cannot access this file directly!');
-}
 
 /**
  * This is the MetaModelAttribute class for handling text fields.
  *
  * @package	   MetaModels
- * @subpackage AttributeLangCode
+ * @subpackage AttributeGeoProtection
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  */
 class MetaModelAttributeGeoProtection extends MetaModelAttributeComplex
@@ -157,5 +154,3 @@ class MetaModelAttributeGeoProtection extends MetaModelAttributeComplex
 	}
 
 }
-
-?>
