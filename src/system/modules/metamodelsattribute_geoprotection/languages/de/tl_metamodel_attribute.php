@@ -15,13 +15,7 @@
  * @filesource
  */
 
-/**
- * Legends
- */
-$GLOBALS['TL_LANG']['tl_metamodel_attribute']['display_legend']    = 'Darstellungseinstellungen';
-
-/**
- * Fields
- */
-$GLOBALS['TL_LANG']['tl_metamodel_attribute']['typeOptions']['geoprotection']    = 'GeoProtection';
-$GLOBALS['TL_LANG']['tl_metamodel_attribute']['geoprotection']                   = array('Länder', 'Wählen Sie die konfigurierbaren Länder für den Editor.');
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['display_legend']               = 'Anzeigeeinstellungen';
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['geoprotection']['0']           = 'Länder';
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['geoprotection']['1']           = 'Wählen Sie die konfigurierbaren Länder für den Editor.';
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['typeOptions']['geoprotection'] = 'GeoProtection';
