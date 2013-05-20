@@ -8,8 +8,10 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2013-05-12T00:10:20+02:00
+ * last-updated: 2013-05-15T00:13:21+02:00
  */
 
-
-$GLOBALS['TL_LANG']['tl_metamodel_attribute']['display_legend'] = 'Ρυθμίσεις οθόνης ';
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['display_legend']               = 'Ρυθμίσεις οθόνης ';
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['geoprotection']['0']           = 'Χωρες';
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['geoprotection']['1']           = 'Επιλέξτε τις χώρες ρύθμισης για τον επεξεργαστή. ';
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['typeOptions']['geoprotection'] = 'GeoProtection';
