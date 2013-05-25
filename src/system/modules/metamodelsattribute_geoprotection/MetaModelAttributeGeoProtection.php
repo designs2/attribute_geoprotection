@@ -75,9 +75,8 @@ class MetaModelAttributeGeoProtection extends MetaModelAttributeComplex
 		return $arrFieldDef;
 	}
 
-	public function getFilterOptions($arrIds, $usedOnly)
+	public function getFilterOptions($arrIds, $usedOnly, &$arrCount = null)
 	{
-
 		$arrReturn = array();
 
 		return $arrReturn;
