@@ -15,6 +15,9 @@
  * @filesource
  */
 
+use MetaModels\Attribute\BaseComplex;
+use MetaModels\Render\Template;
+
 /**
  * This is the MetaModelAttribute class for handling text fields.
  *
@@ -22,12 +25,12 @@
  * @subpackage AttributeGeoProtection
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  */
-class MetaModelAttributeGeoProtection extends MetaModelAttributeComplex
+class MetaModelAttributeGeoProtection extends BaseComplex
 {
 	/**
 	 * when rendered via a template, this returns the values to be stored in the template.
 	 */
-	protected function prepareTemplate(MetaModelTemplate $objTemplate, $arrRowData, $objSettings = null)
+	protected function prepareTemplate(Template $objTemplate, $arrRowData, $objSettings = null)
 	{
 		parent::prepareTemplate($objTemplate, $arrRowData, $objSettings);
 		$objTemplate->value = $arrRowData[$this->getColName()][0];
@@ -75,7 +78,7 @@ class MetaModelAttributeGeoProtection extends MetaModelAttributeComplex
 		return $arrFieldDef;
 	}
 
-	public function getFilterOptions($arrIds, $usedOnly)
+	public function getFilterOptions($arrIds, $usedOnly, &$arrCount = null)
 	{
 
 		$arrReturn = array();
