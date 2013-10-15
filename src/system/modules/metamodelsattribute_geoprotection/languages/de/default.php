@@ -15,8 +15,5 @@
  * @filesource
  */
 
-/**
- * Fields
- */
-$GLOBALS['TL_LANG']['tl_metamodel_attribute']['gp_hide'] = 'Verstecken';
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['gp_hide'] = 'Verbergen';
 $GLOBALS['TL_LANG']['tl_metamodel_attribute']['gp_show'] = 'Anzeigen';

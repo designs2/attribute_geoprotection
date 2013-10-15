@@ -15,13 +15,7 @@
  * @filesource
  */
 
-$GLOBALS['METAMODELS']['attributes']['geoprotection'] = array
-(
-	'class' => 'MetaModelAttributeGeoProtection',
-	'image' => 'system/modules/metamodelsattribute_geoprotection/html/geoprotection.png'
-);
+$GLOBALS['METAMODELS']['attributes']['geoprotection']['class'] = 'MetaModelAttributeGeoProtection';
+$GLOBALS['METAMODELS']['attributes']['geoprotection']['image'] = 'system/modules/metamodelsattribute_geoprotection/html/geoprotection.png';
 
-$GLOBALS['METAMODELS']['filters']['geoprotection'] = array
-(
-	'class' => 'MetaModelFilterSettingGeoprotection'
-);
+$GLOBALS['METAMODELS']['filters']['geoprotection']['class'] = 'MetaModelFilterSettingGeoprotection';
