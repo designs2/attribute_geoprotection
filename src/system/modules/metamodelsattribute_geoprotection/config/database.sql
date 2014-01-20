@@ -29,7 +29,7 @@ CREATE TABLE `tl_metamodel_geoprotection` (
   PRIMARY KEY  (`id`),
   KEY `attr_id` (`attr_id`),
   KEY `item_id` (`item_id`),
-  UNIQUE KEY `geoid` (`item_id`, `attr_id`),
+  UNIQUE KEY `geoid` (`item_id`, `attr_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -38,5 +38,5 @@ CREATE TABLE `tl_metamodel_geoprotection` (
 
 CREATE TABLE `tl_metamodel_filtersetting` (
 -- corresponding tl_metamodel_attribute
-  `gp_attr_id` int(10) unsigned NOT NULL default '0',
+  `gp_attr_id` int(10) unsigned NOT NULL default '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
