@@ -9,11 +9,14 @@
  * PHP version 5
  * @package     MetaModels
  * @subpackage  AttributeGeoProtection
- * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author      Stefan Heimes <stefan_heimes@hotmail.com>
+ * @author      David Maack <david.maack@arcor.de>
  * @copyright   The MetaModels team.
  * @license     LGPL.
  * @filesource
  */
+
+namespace MetaModels\Attribute\Geoprotection;
 
 use MetaModels\Attribute\BaseComplex;
 use MetaModels\Render\Template;
@@ -21,11 +24,11 @@ use MetaModels\Render\Template;
 /**
  * This is the MetaModelAttribute class for handling text fields.
  *
- * @package	   MetaModels
- * @subpackage AttributeGeoProtection
- * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @package       MetaModels
+ * @subpackage    AttributeGeoProtection
+ * @author        Christian Schiffler <c.schiffler@cyberspectrum.de>
  */
-class MetaModelAttributeGeoProtection extends BaseComplex
+class GeoProtection extends BaseComplex
 {
 	/**
 	 * when rendered via a template, this returns the values to be stored in the template.
@@ -34,7 +37,7 @@ class MetaModelAttributeGeoProtection extends BaseComplex
 	{
 		parent::prepareTemplate($objTemplate, $arrRowData, $objSettings);
 		$objTemplate->value = $arrRowData[$this->getColName()][0];
-		$objTemplate->raw = $arrRowData[$this->getColName()][0];
+		$objTemplate->raw   = $arrRowData[$this->getColName()][0];
 	}
 
 	/////////////////////////////////////////////////////////////////
@@ -51,29 +54,49 @@ class MetaModelAttributeGeoProtection extends BaseComplex
 
 	public function getFieldDefinition($arrOverrides = array())
 	{
+		// Load the language files.
+		\Controller::loadLanguageFile('tl_metamodel_attribute');
+		\Controller::loadLanguageFile('default');
 
-		$arrFieldDef=parent::getFieldDefinition($arrOverrides);
+		$arrFieldDef              = parent::getFieldDefinition($arrOverrides);
 		$arrFieldDef['inputType'] = 'multiColumnWizard';
-		$arrFieldDef['eval'] = array('columnFields' => array
-		(
-			'gp_mode' => array
+		$arrFieldDef['eval']      = array(
+			'columnFields' => array
 			(
-				'inputType'             => 'select',
-				'eval' 			=> array('style'=>'width:180px', 'includeBlankOption' => true, 'columnPos' =>'first'),
-				'options'		=> array('gp_show' => $GLOBALS['TL_LANG']['tl_metamodel_attribute']['gp_show'], 'gp_hide' => $GLOBALS['TL_LANG']['tl_metamodel_attribute']['gp_hide']),
-
-
+				'gp_mode'      => array
+				(
+					'inputType' => 'select',
+					'eval'      => array
+					(
+						'style'              => 'width:180px',
+						'includeBlankOption' => true,
+						'columnPos'          => 'first'
+					),
+					'options'   => array
+					(
+						'gp_show' => $GLOBALS['TL_LANG']['tl_metamodel_attribute']['gp_show'],
+						'gp_hide' => $GLOBALS['TL_LANG']['tl_metamodel_attribute']['gp_hide']
+					),
+				),
+				'gp_countries' => array
+				(
+					'inputType' => 'checkbox',
+					'options'   => $this->getSelectedCountries(),
+					'eval'      => array
+					(
+						'multiple'  => true,
+						'columnPos' => 'first'
+					)
+				),
 			),
-			'gp_countries' => array
+			'buttons'      => array
 			(
-				'inputType'             => 'checkbox',
-				'options'		=> $this->getSelectedCountries(),
-				'eval'			=> array('multiple' => true, 'columnPos' =>'first')
-
-
-			),
-
-		), 'buttons' => array('copy' => false, 'delete' => false, 'up' => false, 'down' => false));
+				'copy'   => false,
+				'delete' => false,
+				'up'     => false,
+				'down'   => false
+			)
+		);
 
 		return $arrFieldDef;
 	}
@@ -91,12 +114,11 @@ class MetaModelAttributeGeoProtection extends BaseComplex
 
 	public function getDataFor($arrIds)
 	{
-		$objDb = Database::getInstance();
-		//return '';
 		$arrData = array();
-		foreach($arrIds as $id)
+		foreach ($arrIds as $id)
 		{
-			$objResult = $objDb->prepare('SELECT * FROM tl_metamodel_geoprotection WHERE attr_id = ? AND item_id = ?')
+			$objResult = \Database::getInstance()
+				->prepare('SELECT * FROM tl_metamodel_geoprotection WHERE attr_id = ? AND item_id = ?')
 				->limit(1)
 				->execute($this->get('id'), $id);
 
@@ -106,7 +128,7 @@ class MetaModelAttributeGeoProtection extends BaseComplex
 				(
 					array
 					(
-						'gp_mode' => $objResult->mode,
+						'gp_mode'      => $objResult->mode,
 						'gp_countries' => explode(',', $objResult->countries)
 					)
 				);
@@ -118,21 +140,25 @@ class MetaModelAttributeGeoProtection extends BaseComplex
 
 	public function setDataFor($arrValues)
 	{
-		$objDb = Database::getInstance();
 		foreach ($arrValues as $id => $value)
 		{
-			if (!is_array($value)) continue;
+			if (!is_array($value))
+			{
+				continue;
+			}
+
 			$arrTmp = (is_array($value[0]['gp_countries'])) ? $value[0]['gp_countries'] : array();
 
 			$arrData = array
 			(
-			    'countries'		=> implode(',', $arrTmp),
-			    'mode'		=> $arrTmp,
-			    'attr_id'		=> $this->get('id'),
-			    'item_id'		=> $id
-
+				'countries' => implode(',', $arrTmp),
+				'mode'      => $arrTmp,
+				'attr_id'   => $this->get('id'),
+				'item_id'   => $id
 			);
-			$objResult = $objDb->prepare('INSERT INTO tl_metamodel_geoprotection %s ON DUPLICATE KEY UPDATE countries = ?, mode = ?')
+
+			\Database::getInstance()
+				->prepare('INSERT INTO tl_metamodel_geoprotection %s ON DUPLICATE KEY UPDATE countries = ?, mode = ?')
 				->set($arrData)
 				->execute(implode(',', $arrTmp), $value[0]['gp_mode']);
 		}
@@ -140,18 +166,18 @@ class MetaModelAttributeGeoProtection extends BaseComplex
 
 	public function unsetDataFor($arrIds)
 	{
-	    // TODO: unset Data
+		// TODO: unset Data
 
 	}
 
 	public function getSelectedCountries()
 	{
+		$objValue = \Database::getInstance()
+			->prepare('SELECT geoprotection FROM tl_metamodel_attribute WHERE id = ?')
+			->limit(1)
+			->execute($this->get('id'));
 
-		$objDB = Database::getInstance();
-		$objValue = $objDB->prepare('SELECT geoprotection FROM tl_metamodel_attribute WHERE id = ?')->limit(1)->execute($this->get('id'));
-		$arrTmp = deserialize($objValue->geoprotection);
-		$objTableHelper = new TableMetaModelsAttributeGeoProtection();
-		return ($objTableHelper->getCountriesByContinent($arrTmp));
+		return Helper::getCountriesByContinent(deserialize($objValue->geoprotection));
 
 	}
 
