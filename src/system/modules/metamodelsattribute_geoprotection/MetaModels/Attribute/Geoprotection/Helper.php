@@ -9,53 +9,58 @@
  * PHP version 5
  * @package     MetaModels
  * @subpackage  AttributeGeoProtection
- * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author      Stefan Heimes <stefan_heimes@hotmail.com>
+ * @author      David Maack <david.maack@arcor.de>
  * @copyright   The MetaModels team.
  * @license     LGPL.
  * @filesource
  */
 
+namespace MetaModels\Attribute\Geoprotection;
+
 /**
- * Supplementary class for handling DCA information for geoprotection attributes.
+ * This is the MetaModelAttribute class for handling text fields.
  *
- * @package	   MetaModels
- * @subpackage AttributeGeoProtection
- * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @package       MetaModels
+ * @subpackage    AttributeGeoProtection
+ * @author        Christian Schiffler <c.schiffler@cyberspectrum.de>
  */
-class TableMetaModelsAttributeGeoProtection extends TableMetaModelAttribute 
+class Helper
 {
-
-	protected static $objInstance;
-	
-	public static function getInstance() {
-		isset(self::$objInstance) || self::$objInstance = new self();
-		return self::$objInstance;
-	}
-
-	public function __construct() {
-		parent::__construct();
-	}
-
-	public function getCountriesByContinent($arrValues = null) 
+	/**
+	 * Get a list with all countries.
+	 *
+	 * @param array $arrValues a list with preset values.
+	 *
+	 * @return array|null The new list.
+	 */
+	public static function getCountriesByContinent($arrValues = array())
 	{
-		$return = array();
+		// Init all vars.
+		$return    = array();
 		$countries = array();
-		$arrAux = array();
-		$arrTmp = array();
+		$arrAux    = array();
+		$arrTmp    = array();
 
-		$this->loadLanguageFile('countries');
-		$this->loadLanguageFile('continents');
+		// Load the language files.
+		\System::loadLanguageFile('countries');
+		\System::loadLanguageFile('continents');
+
+		// Include all files with name.
 		include(TL_ROOT . '/system/config/countries.php');
 		include(TL_ROOT . '/system/config/countriesByContinent.php');
 
+		/** @var $countriesByContinent array */
 		foreach ($countriesByContinent as $strConKey => $arrCountries)
 		{
 			$strConKeyTranslated = strlen($GLOBALS['TL_LANG']['CONTINENT'][$strConKey]) ? utf8_romanize($GLOBALS['TL_LANG']['CONTINENT'][$strConKey]) : $strConKey;
-			$arrAux[$strConKey] = $strConKeyTranslated;
+			$arrAux[$strConKey]  = $strConKeyTranslated;
 			foreach ($arrCountries as $key => $strCounntry)
 			{
 				if (!is_array($arrValues) || in_array($key, $arrValues))
+				{
 					$arrTmp[$strConKeyTranslated][$key] = strlen($GLOBALS['TL_LANG']['CNT'][$key]) ? utf8_romanize($GLOBALS['TL_LANG']['CNT'][$key]) : $countries[$key];
+				}
 			}
 		}
 
@@ -65,7 +70,7 @@ class TableMetaModelsAttributeGeoProtection extends TableMetaModelAttribute
 		{
 			asort($arrCountries);
 			//get original continent key
-			$strOrgKey = array_search($strConKey, $arrAux);
+			$strOrgKey           = array_search($strConKey, $arrAux);
 			$strConKeyTranslated = strlen($GLOBALS['TL_LANG']['CONTINENT'][$strOrgKey]) ? ($GLOBALS['TL_LANG']['CONTINENT'][$strOrgKey]) : $strConKey;
 			foreach ($arrCountries as $strKey => $strCountry)
 			{
@@ -75,6 +80,7 @@ class TableMetaModelsAttributeGeoProtection extends TableMetaModelAttribute
 
 		$return[$GLOBALS['TL_LANG']['CONTINENT']['other']]['xx'] = strlen($GLOBALS['TL_LANG']['CNT']['xx']) ? $GLOBALS['TL_LANG']['CNT']['xx'] : 'No Country';
 
+		// Add to the event.
 		return $return;
 	}
 }
