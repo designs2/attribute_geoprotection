@@ -15,7 +15,14 @@
  * @filesource
  */
 
-$GLOBALS['METAMODELS']['attributes']['geoprotection']['class'] = 'MetaModelAttributeGeoProtection';
+$GLOBALS['METAMODELS']['attributes']['geoprotection']['class'] = 'MetaModels\Attribute\Geoprotection\GeoProtection';
 $GLOBALS['METAMODELS']['attributes']['geoprotection']['image'] = 'system/modules/metamodelsattribute_geoprotection/html/geoprotection.png';
 
-$GLOBALS['METAMODELS']['filters']['geoprotection']['class'] = 'MetaModelFilterSettingGeoprotection';
+$GLOBALS['METAMODELS']['filters']['geoprotection']['class'] = 'MetaModels\Filter\Setting\Geoprotection';
+
+$GLOBALS['TL_EVENTS'][\ContaoCommunityAlliance\Contao\EventDispatcher\Event\CreateEventDispatcherEvent::NAME][] =
+	'\MetaModels\DcGeneral\Events\Table\Attribute\Geoprotection\PropertyAttribute::registerEvents';
+
+$GLOBALS['TL_EVENTS'][\ContaoCommunityAlliance\Contao\EventDispatcher\Event\CreateEventDispatcherEvent::NAME][] =
+	'\MetaModels\DcGeneral\Events\Filter\Setting\Geoprotection\Subscriber::registerEvents';
+
