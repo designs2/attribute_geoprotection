@@ -18,10 +18,10 @@
 /**
  * Legends
  */
-$GLOBALS['TL_LANG']['tl_metamodel_attribute']['display_legend']    = 'Display settings';
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['display_legend'] = 'Display settings';
 
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_metamodel_attribute']['typeOptions']['geoprotection']    = 'GeoProtection';
-$GLOBALS['TL_LANG']['tl_metamodel_attribute']['geoprotection']                   = array('Countries', 'Choose the configurable countries for the editor.');
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['typeOptions']['geoprotection'] = 'GeoProtection';
+$GLOBALS['TL_LANG']['tl_metamodel_attribute']['geoprotection']                = array('Countries', 'Choose the configurable countries for the editor.');
