@@ -32,9 +32,7 @@ $GLOBALS['TL_DCA']['tl_metamodel_attribute']['fields']['geoprotection'] = array
 	'eval'                  => array
 	(
 		'doNotSaveEmpty' => true,
-		'alwaysSave' => true,
-		'multiple' => true
-	),
-	'options_callback' => array('TableMetaModelsAttributeGeoProtection', 'getCountriesByContinent')
-	
+		'alwaysSave'     => true,
+		'multiple'       => true
+	)
 );
