@@ -9,29 +9,36 @@
  * PHP version 5
  * @package     MetaModels
  * @subpackage  AttributeGeoProtection
- * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author      Stefan Heimes <stefan_heimes@hotmail.com>
+ * @author      David Maack <david.maack@arcor.de>
  * @copyright   The MetaModels team.
  * @license     LGPL.
  * @filesource
  */
 
-class MetaModelFilterSettingGeoprotection extends MetaModelFilterSetting 
+namespace MetaModels\Filter\Setting;
+
+
+use Geolocation;
+use MetaModels\Filter\IFilter;
+use MetaModels\Filter\Rules\SimpleQuery;
+use MetaModels\Filter\Rules\StaticIdList;
+
+class Geoprotection extends Simple
 {
 	/**
-	 * 
-	 * @param IMetaModelFilter $objFilter
-	 * @param type $arrFilterUrl
-	 * @return type
+	 * {@inheritdoc}
 	 */
-	public function prepareRules(IMetaModelFilter $objFilter, $arrFilterUrl) 
+	public function prepareRules(IFilter $objFilter, $arrFilterUrl)
 	{
 		$objAttribute = $this->getMetaModel()->getAttributeById($this->get('gp_attr_id'));
-		if ($objAttribute) {
-			$objGeo = Geolocation::getInstance();
+		if ($objAttribute)
+		{
+			$objGeo     = Geolocation::getInstance();
 			$arrCountry = $objGeo->getUserGeolocation()->getCountriesShort();
 			//set 'no_country' if no country was found
 			$arrCountry = ($arrCountry) ? $arrCountry : array('xx');
-			
+
 			//build query string part
 			foreach ($arrCountry as $k => $val)
 			{
@@ -39,19 +46,19 @@ class MetaModelFilterSettingGeoprotection extends MetaModelFilterSetting
 			}
 
 			$arrMyFilterUrl = array_slice($arrFilterUrl, 0);
-			$objFilterRule = new MetaModelFilterRuleSimpleQuery(
-					'SELECT item_id FROM tl_metamodel_geoprotection WHERE attr_id = ? AND 
-						((mode = \'\') OR (mode = \'gp_show\' AND ('.implode(' OR ',$arrCountry).')) OR  (mode = \'gp_hide\' AND NOT ('.implode(' OR ',$arrCountry).')))',
-					array($this->get('gp_attr_id')),
-					'item_id'
+			$objFilterRule  = new SimpleQuery(
+				'SELECT item_id FROM tl_metamodel_geoprotection WHERE attr_id = ? AND
+					((mode = \'\') OR (mode = \'gp_show\' AND (' . implode(' OR ', $arrCountry) . ')) OR  (mode = \'gp_hide\' AND NOT (' . implode(' OR ', $arrCountry) . ')))',
+				array($this->get('gp_attr_id')),
+				'item_id'
 			);
 
 			$objFilter->addFilterRule($objFilterRule);
-					return;
+			return;
 
 		}
 		//  no attribute found 
-		$objFilter->addFilterRule(new MetaModelFilterRuleStaticIdList(array()));
+		$objFilter->addFilterRule(new StaticIdList(array()));
 	}
 
 }
