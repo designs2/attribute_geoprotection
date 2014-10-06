@@ -21,10 +21,12 @@
  */
 ClassLoader::addClasses(array
 (
-	'MetaModelAttributeGeoProtection'             => 'system/modules/metamodelsattribute_geoprotection/MetaModelAttributeGeoProtection.php',
-	'MetaModelFilterSettingGeoprotection'         => 'system/modules/metamodelsattribute_geoprotection/MetaModelFilterSettingGeoprotection.php',
-	'TableMetaModelFilterSettingGeoprotection'    => 'system/modules/metamodelsattribute_geoprotection/TableMetaModelFilterSettingGeoprotection.php',
-	'TableMetaModelsAttributeGeoProtection'       => 'system/modules/metamodelsattribute_geoprotection/TableMetaModelsAttributeGeoProtection.php',
+	// MetaModels
+	'MetaModels\Attribute\Geoprotection\Helper'                                   => 'system/modules/metamodelsattribute_geoprotection/MetaModels/Attribute/Geoprotection/Helper.php',
+	'MetaModels\Attribute\Geoprotection\GeoProtection'                            => 'system/modules/metamodelsattribute_geoprotection/MetaModels/Attribute/Geoprotection/GeoProtection.php',
+	'MetaModels\DcGeneral\Events\Table\Attribute\Geoprotection\PropertyAttribute' => 'system/modules/metamodelsattribute_geoprotection/MetaModels/DcGeneral/Events/Table/Attribute/Geoprotection/PropertyAttribute.php',
+	'MetaModels\DcGeneral\Events\Filter\Setting\Geoprotection\Subscriber'         => 'system/modules/metamodelsattribute_geoprotection/MetaModels/DcGeneral/Events/Filter/Setting/Geoprotection/Subscriber.php',
+	'MetaModels\Filter\Setting\Geoprotection'                                     => 'system/modules/metamodelsattribute_geoprotection/MetaModels/Filter/Setting/Geoprotection.php',
 ));
 
 
@@ -33,5 +35,5 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'mm_attr_geoprotection'              => 'system/modules/metamodelsattribute_geoprotection/templates',
+	'mm_attr_geoprotection' => 'system/modules/metamodelsattribute_geoprotection/templates',
 ));
