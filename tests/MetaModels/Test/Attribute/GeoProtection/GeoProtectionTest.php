@@ -20,7 +20,7 @@ namespace MetaModels\Test\Attribute\GeoProtection;
 use MetaModels\Attribute\GeoProtection\GeoProtection;
 
 /**
- * Unit tests to test class Alias.
+ * Unit tests to test class GeoProtection.
  */
 class GeoProtectionTest extends \PHPUnit_Framework_TestCase
 {
