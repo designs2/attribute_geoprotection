@@ -53,7 +53,7 @@ class AttributeTypeFactory extends AbstractAttributeTypeFactory implements Event
     }
 
     /**
-     * Create a new instance.
+     * {@inheritdoc}
      */
     public function __construct()
     {

@@ -48,9 +48,7 @@ class GeoProtection extends BaseComplex
 
 
     /**
-     * Get attribute setting names.
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function getAttributeSettingNames()
     {
@@ -61,11 +59,7 @@ class GeoProtection extends BaseComplex
 
 
     /**
-     * Get field definition.
-     *
-     * @param array $arrOverrides Array with overrides.
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function getFieldDefinition($arrOverrides = array())
     {
@@ -111,13 +105,7 @@ class GeoProtection extends BaseComplex
 
 
     /**
-     * Get filter options.
-     *
-     * @param array $arrIds   Array with IDs.
-     * @param bool  $usedOnly UsedOnly flag.
-     * @param null  $arrCount Array count.
-     *
-     * @return array
+     * {@inheritdoc}
      *
      * @codingStandardsIgnoreStart
      */
@@ -131,11 +119,7 @@ class GeoProtection extends BaseComplex
 
 
     /**
-     * Get data for specific IDs.
-     *
-     * @param array $arrIds Array with IDs.
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function getDataFor($arrIds)
     {
@@ -161,11 +145,7 @@ class GeoProtection extends BaseComplex
 
 
     /**
-     * Set data for specific IDs.
-     *
-     * @param array $arrValues Array with values.
-     *
-     * @return void
+     * {@inheritdoc}
      */
     public function setDataFor($arrValues)
     {
@@ -192,11 +172,7 @@ class GeoProtection extends BaseComplex
 
 
     /**
-     * Unset data for specific IDs.
-     *
-     * @param array $arrIds Array with IDs.
-     *
-     * @return void
+     * {@inheritdoc}
      */
     public function unsetDataFor($arrIds)
     {
