@@ -43,31 +43,54 @@
 		"irc":"irc://irc.freenode.org/contao.mm",
 		"source":"https://github.com/MetaModels/attribute_geoprotection"
 	},
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://legacy-packages-via.contao-community-alliance.org/"
+        }
+    ],
 	"require":{
-		"php":">=5.3",
-		"contao/core": ">=2.11,<4.0",
-		"contao-community-alliance/composer-plugin": "*",
-		"metamodels/core":"~2.0.0",
-		"menatwork/geoprotection":"1.*"
+        "php":">=5.3",
+        "contao/core": ">=2.11,<4.0",
+        "contao-community-alliance/composer-plugin": "~2.0",
+        "metamodels/core":"~2.0.0",
+        "menatwork/geoprotection":"1.*"
 	},
 	"require-dev": {
-		"metamodels/php-coding-standard":"dev-master",
-		"cyberspectrum/contao-toolbox": "dev-master"
+        "metamodels/php-coding-standard": "~2.0",
+        "cyberspectrum/contao-toolbox": "dev-master",
+        "contao-community-alliance/build-system": "~1.0",
+        "phpunit/phpunit": ">=3.7.10,<4-dev"
 	},
-	"extra":{
-		"contao": {
-			"symlinks":{
-				"src/system/modules/metamodelsattribute_geoprotection":"system/modules/metamodelsattribute_geoprotection"
-			},
-			"transifex": {
-				"project": "metamodels",
-				"prefix": "attribute_geoprotection-",
-				"languages_cto": "src/system/modules/metamodelsattribute_geoprotection/languages",
-				"languages_tx": ".tx"
-			}
-		},
-		"branch-alias": {
-			"dev-tng": "2.0.x-dev"
-		}
-	}
+    "conflict": {
+        "contao/core": "3.0.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "MetaModels": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "MetaModels\\Test": "tests"
+        }
+    },
+    "extra":{
+        "contao": {
+            "sources":{
+                "contao":"system/modules/metamodelsattribute_geoprotection"
+            },
+            "transifex": {
+                "project": "metamodels",
+                "prefix": "attribute_geoprotection-",
+                "languages_cto": "contao/languages",
+                "languages_tx": ".tx"
+            }
+        },
+        "branch-alias": {
+            "dev-tng": "2.0.x-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
