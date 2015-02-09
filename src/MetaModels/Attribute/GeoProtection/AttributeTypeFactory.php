@@ -59,6 +59,6 @@ class AttributeTypeFactory extends AbstractAttributeTypeFactory implements Event
     {
         parent::__construct();
         $this->typeName  = 'geoprotection';
-        $this->typeClass = 'MetaModels\Attribute\Geoprotection\GeoProtection';
+        $this->typeClass = 'MetaModels\Attribute\GeoProtection\GeoProtection';
     }
 }

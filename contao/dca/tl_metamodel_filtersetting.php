@@ -20,19 +20,5 @@
  * Table tl_metamodel_attribute
  */
 $GLOBALS['TL_DCA']['tl_metamodel_filtersetting']['metapalettes']['geoprotection extends default'] = array(
-    '+config' => array('gp_attr_id'),
-);
-
-$GLOBALS['TL_DCA']['tl_metamodel_filtersetting']['fields']['gp_attr_id'] = array(
-    'label'                   => &$GLOBALS['TL_LANG']['tl_metamodel_filtersetting']['attr_id'],
-    'exclude'                 => true,
-    'inputType'               => 'select',
-    'eval'                    => array(
-        'doNotSaveEmpty'      => true,
-        'alwaysSave'          => true,
-        'submitOnChange'      => true,
-        'includeBlankOption'  => true,
-        'mandatory'           => true,
-        'tl_class'            => 'w50',
-    ),
+    '+config' => array('attr_id'),
 );

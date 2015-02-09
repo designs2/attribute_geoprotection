@@ -17,19 +17,6 @@
  */
 
 /**
- * Register the classes
- */
-ClassLoader::addClasses(array(
-    // MetaModels
-    'MetaModels\Attribute\Geoprotection\AttributeTypeFactory'                     => 'system/modules/metamodelsattribute_geoprotection/MetaModels/Attribute/Geoprotection/AttributeTypeFactory.php',
-    'MetaModels\Attribute\Geoprotection\GeoProtection'                            => 'system/modules/metamodelsattribute_geoprotection/MetaModels/Attribute/Geoprotection/GeoProtection.php',
-    'MetaModels\Attribute\Geoprotection\Helper'                                   => 'system/modules/metamodelsattribute_geoprotection/MetaModels/Attribute/Geoprotection/Helper.php',
-    'MetaModels\DcGeneral\Events\Filter\Setting\Geoprotection\Subscriber'         => 'system/modules/metamodelsattribute_geoprotection/MetaModels/DcGeneral/Events/Filter/Setting/Geoprotection/Subscriber.php',
-    'MetaModels\DcGeneral\Events\Table\Attribute\Geoprotection\PropertyAttribute' => 'system/modules/metamodelsattribute_geoprotection/MetaModels/DcGeneral/Events/Table/Attribute/Geoprotection/PropertyAttribute.php',
-    'MetaModels\Filter\Setting\Geoprotection'                                     => 'system/modules/metamodelsattribute_geoprotection/MetaModels/Filter/Setting/Geoprotection.php',
-));
-
-/**
  * Register the templates
  */
 TemplateLoader::addFiles(array(

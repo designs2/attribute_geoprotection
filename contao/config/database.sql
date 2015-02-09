@@ -31,12 +31,3 @@ CREATE TABLE `tl_metamodel_geoprotection` (
   KEY `item_id` (`item_id`),
   UNIQUE KEY `geoid` (`item_id`, `attr_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Table `tl_metamodel_filtersetting`
---
-
-CREATE TABLE `tl_metamodel_filtersetting` (
--- corresponding tl_metamodel_attribute
-  `gp_attr_id` int(10) unsigned NOT NULL default '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
