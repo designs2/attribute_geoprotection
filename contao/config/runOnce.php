@@ -9,6 +9,7 @@
  * @package MetaModels
  * @subpackage GeoProtection
  * @author David Maack <david.maack@arcor.de>
+ * @author Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @copyright The MetaModels team.
  * @license LGPL.
  * @filesource

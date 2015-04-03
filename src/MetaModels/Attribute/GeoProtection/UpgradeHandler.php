@@ -10,7 +10,7 @@
  * @package    MetaModels
  * @subpackage Core
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
- * @author     David Maack <david.mack@arcor.de>
+ * @author     David Maack <david.maack@arcor.de>
  * @copyright  The MetaModels team.
  * @license    LGPL.
  * @filesource
@@ -53,7 +53,12 @@ class UpgradeHandler
             && $objDB->fieldExists('gp_attr_id', 'tl_metamodel_filtersetting', true)
         ) {
             // update the field
-            $objDB->execute('UPDATE `tl_metamodel_filtersetting` set attr_id = gp_attr_id WHERE TYPE = "geoprotection" AND attr_id = 0');
+            $objDB->execute(
+                'UPDATE `tl_metamodel_filtersetting`
+                 SET attr_id = gp_attr_id
+                 WHERE type = "geoprotection"
+                    AND attr_id = 0'
+            );
         }
     }
 

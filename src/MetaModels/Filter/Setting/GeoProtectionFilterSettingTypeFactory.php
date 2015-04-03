@@ -10,6 +10,7 @@
  * @package    MetaModels
  * @subpackage FilterTags
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author     David Maack <david.maack@arcor.de>
  * @copyright  The MetaModels team.
  * @license    LGPL.
  * @filesource

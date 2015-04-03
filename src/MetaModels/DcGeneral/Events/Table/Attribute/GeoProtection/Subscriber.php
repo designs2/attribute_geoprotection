@@ -9,7 +9,8 @@
  * PHP version 5
  * @package     MetaModels
  * @subpackage  AttributeGeoProtection
- * @author      Stefan Heimes <stefan_heimes@hotmail.com>
+ * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author      David Greminger <david.greminger@1up.io>
  * @author      David Maack <david.maack@arcor.de>
  * @copyright   The MetaModels team.
  * @license     LGPL.
@@ -67,6 +68,6 @@ class Subscriber extends BaseSubscriber
         $arrValues = Helper::getCountriesByContinent($arrValues);
 
         // Set the new options.
-       $event->setOptions($arrValues);
+        $event->setOptions($arrValues);
     }
 }

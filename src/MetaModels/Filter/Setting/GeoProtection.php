@@ -9,8 +9,8 @@
  * PHP version 5
  * @package     MetaModels
  * @subpackage  AttributeGeoProtection
- * @author      Stefan Heimes <stefan_heimes@hotmail.com>
- * @author      David Maack <david.maack@arcor.de>
+ * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author      David Greminger <david.greminger@1up.io>
  * @copyright   The MetaModels team.
  * @license     LGPL.
  * @filesource
@@ -24,7 +24,7 @@ use MetaModels\Filter\Rules\SimpleQuery;
 use MetaModels\Filter\Rules\StaticIdList;
 
 /**
- * Class GeoProtection
+ * Class GeoProtection.
  *
  * @package MetaModels\Filter\Setting
  */
@@ -43,15 +43,14 @@ class GeoProtection extends Simple
             $arrCountry = ($arrCountry) ? $arrCountry : array('xx');
 
             // Build query string part.
-            foreach ($arrCountry as $k => $val) {
+            foreach (array_keys($arrCountry) as $k) {
                 $arrCountry[$k] = "find_in_set ('" . $arrCountry[$k] . "', countries)";
             }
 
-            $arrMyFilterUrl = array_slice($arrFilterUrl, 0);
-            $objFilterRule  = new SimpleQuery(
+            $objFilterRule = new SimpleQuery(
                 'SELECT item_id FROM tl_metamodel_geoprotection WHERE attr_id = ? AND
-					((mode = \'\') OR (mode = \'gp_show\' AND ('.implode(' OR ', $arrCountry).')) OR
-					(mode = \'gp_hide\' AND NOT ('.implode(' OR ', $arrCountry).')))',
+                    ((mode = \'\') OR (mode = \'gp_show\' AND ('.implode(' OR ', $arrCountry).')) OR
+                    (mode = \'gp_hide\' AND NOT ('.implode(' OR ', $arrCountry).')))',
                 array($this->get('gp_attr_id')),
                 'item_id'
             );

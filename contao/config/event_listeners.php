@@ -8,7 +8,7 @@
  * PHP version 5
  * @package     MetaModels
  * @subpackage  AttributeGeoProtection
- * @author      Stefan Heimes <stefan_heimes@hotmail.com>
+ * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @author      David Maack <david.maack@arcor.de>
  * @copyright   The MetaModels team.
  * @license     LGPL.
@@ -17,8 +17,6 @@
 
 use MetaModels\Attribute\GeoProtection\AttributeTypeFactory;
 use MetaModels\Attribute\Events\CreateAttributeFactoryEvent;
-use MetaModels\DcGeneral\Events\Table\Attribute\GeoProtection\Subscriber;
-use MetaModels\Events\MetaModelsBootEvent;
 use MetaModels\Filter\Setting\Events\CreateFilterSettingFactoryEvent;
 use MetaModels\Filter\Setting\GeoProtectionFilterSettingTypeFactory;
 use MetaModels\MetaModelsEvents;

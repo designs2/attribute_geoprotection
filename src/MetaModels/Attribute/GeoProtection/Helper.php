@@ -9,8 +9,8 @@
  * PHP version 5
  * @package     MetaModels
  * @subpackage  AttributeGeoProtection
- * @author      Stefan Heimes <stefan_heimes@hotmail.com>
- * @author      David Maack <david.maack@arcor.de>
+ * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author      David Greminger <david.greminger@1up.io>
  * @copyright   The MetaModels team.
  * @license     LGPL.
  * @filesource
@@ -47,6 +47,10 @@ class Helper
      * Return all data from the cache.
      *
      * @return array|null
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
+     * @SuppressWarnings(PHPMD.CamelCaseVariableName)
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
     public static function getCountriesList()
     {
@@ -93,6 +97,9 @@ class Helper
      * @param array $arrValues A list with preset values.
      *
      * @return array|null The new list.
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
+     * @SuppressWarnings(PHPMD.CamelCaseVariableName)
      */
     public static function getCountriesByContinent($arrValues = array())
     {

@@ -9,8 +9,8 @@
  * PHP version 5
  * @package     MetaModels
  * @subpackage  AttributeGeoProtection
- * @author      Stefan Heimes <stefan_heimes@hotmail.com>
- * @author      David Maack <david.maack@arcor.de>
+ * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author      David Greminger <david.greminger@1up.io>
  * @copyright   The MetaModels team.
  * @license     LGPL.
  * @filesource
@@ -19,6 +19,7 @@
 namespace MetaModels\Attribute\GeoProtection;
 
 use MetaModels\Attribute\BaseComplex;
+use MetaModels\Render\Setting\ISimple;
 use MetaModels\Render\Template;
 
 /**
@@ -35,11 +36,11 @@ class GeoProtection extends BaseComplex
      *
      * @param Template $objTemplate Template object.
      * @param array    $arrRowData  Array with data.
-     * @param Object   $objSettings Settings object.
+     * @param ISimple  $objSettings Settings object.
      *
      * @return void
      */
-    protected function prepareTemplate(Template $objTemplate, $arrRowData, $objSettings = null)
+    protected function prepareTemplate(Template $objTemplate, $arrRowData, $objSettings)
     {
         parent::prepareTemplate($objTemplate, $arrRowData, $objSettings);
         $objTemplate->value = $arrRowData[$this->getColName()][0];
@@ -60,6 +61,9 @@ class GeoProtection extends BaseComplex
 
     /**
      * {@inheritdoc}
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
+     * @SuppressWarnings(PHPMD.CamelCaseVariableName)
      */
     public function getFieldDefinition($arrOverrides = array())
     {
@@ -109,7 +113,7 @@ class GeoProtection extends BaseComplex
      *
      * @codingStandardsIgnoreStart
      */
-    public function getFilterOptions($arrIds, $usedOnly, &$arrCount = null)
+    public function getFilterOptions($idList, $usedOnly, &$arrCount = null)
     {
         $arrReturn = array();
 
