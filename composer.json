@@ -1,99 +1,86 @@
 {
-	"name":"metamodels/attribute_geoprotection",
-	"description":"MetaModels attribute for geo tracking and configuration",
-	"keywords":["contao", "metamodels", "attribute", "decimal"],
-	"type":"contao-module",
-	"homepage":"http://now.metamodel.me/",
-	"license":"LGPL-3.0+",
-	"authors":[
-		{
-			"name":"Christian Schiffler",
-			"email":"c.schiffler@cyberspectrum.de",
-			"homepage":"http://www.cyberspectrum.de",
-			"role":"Developer"
-		},
-		{
-			"name":"Andreas Isaak",
-			"email":"info@andreas-isaak.de",
-			"homepage":"http://www.andreas-isaak.de",
-			"role":"Developer"
-		},
-		{
-			"name":"Stefan Heimes",
-			"email":"stefan_heimes@hotmail.com",
-			"role":"Developer"
-		},
-		{
-			"name":"Christian de la Haye",
-			"email":"service@delahaye.de",
-			"homepage":"http://www.delahaye.de/",
-			"role":"Developer"
-		},
-		{
-			"name":"Oliver Hoff",
-			"email":"oliver@hofff.com",
-			"homepage":"http://www.hofff.com/",
-			"role":"Developer"
-		}
-	],
-	"support":{
-		"email":"mail@metamodel.me",
-		"issues":"https://github.com/MetaModels/attribute_geoprotection/issues",
-		"wiki":"http://de.contaowiki.org/MetaModels",
-		"irc":"irc://irc.freenode.org/contao.mm",
-		"source":"https://github.com/MetaModels/attribute_geoprotection"
-	},
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://legacy-packages-via.contao-community-alliance.org/"
-        }
-    ],
-	"require":{
-        "php":">=5.3",
-        "contao/core": ">=2.11,<4.0",
-        "contao-community-alliance/composer-plugin": "~2.0",
-        "metamodels/core":"~2.0.0",
-        "menatwork/geoprotection":"1.*"
-	},
-	"require-dev": {
-        "metamodels/php-coding-standard": "~2.0",
-        "cyberspectrum/contao-toolbox": "dev-master",
-        "contao-community-alliance/build-system": "~1.0",
-        "phpunit/phpunit": ">=3.7.10,<4-dev"
-	},
-    "conflict": {
-        "contao/core": "3.0.*"
+  "name": "metamodels/attribute_geoprotection",
+  "description": "MetaModels attribute for geo tracking and configuration",
+  "keywords": [
+    "contao",
+    "metamodels",
+    "attribute",
+    "decimal"
+  ],
+  "type": "contao-module",
+  "homepage": "http://now.metamodel.me/",
+  "license": "LGPL-3.0+",
+  "authors": [
+    {
+      "name": "Christian Schiffler",
+      "email": "c.schiffler@cyberspectrum.de",
+      "homepage": "http://www.cyberspectrum.de",
+      "role": "Developer"
     },
-    "autoload": {
-        "psr-0": {
-            "MetaModels": "src"
-        }
+    {
+      "name": "Stefan Heimes",
+      "email": "stefan_heimes@hotmail.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "mail@metamodel.me",
+    "issues": "https://github.com/MetaModels/attribute_geoprotection/issues",
+    "wiki": "http://de.contaowiki.org/MetaModels",
+    "irc": "irc://irc.freenode.org/contao.mm",
+    "source": "https://github.com/MetaModels/attribute_geoprotection"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://legacy-packages-via.contao-community-alliance.org/"
+    }
+  ],
+  "require": {
+    "php": ">=5.3",
+    "contao/core": ">=2.11,<4.0",
+    "contao-community-alliance/composer-plugin": "~2.0",
+    "metamodels/core": "~2.0.0",
+    "menatwork/geoprotection": "1.*"
+  },
+  "require-dev": {
+    "metamodels/php-coding-standard": "~2.0",
+    "cyberspectrum/contao-toolbox": "dev-master",
+    "contao-community-alliance/build-system": "~1.0",
+    "phpunit/phpunit": ">=3.7.10,<4-dev"
+  },
+  "conflict": {
+    "contao/core": "3.0.*"
+  },
+  "autoload": {
+    "psr-0": {
+      "MetaModels": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-0": {
+      "MetaModels\\Test": "tests"
+    }
+  },
+  "extra": {
+    "contao": {
+      "sources": {
+        "contao": "system/modules/metamodelsattribute_geoprotection"
+      },
+      "transifex": {
+        "project": "metamodels",
+        "prefix": "attribute_geoprotection-",
+        "languages_cto": "contao/languages",
+        "languages_tx": ".tx"
+      },
+      "runonce": [
+        "runonce/runonce.php"
+      ]
     },
-    "autoload-dev": {
-        "psr-0": {
-            "MetaModels\\Test": "tests"
-        }
-    },
-    "extra":{
-        "contao": {
-            "sources":{
-                "contao":"system/modules/metamodelsattribute_geoprotection"
-            },
-            "transifex": {
-                "project": "metamodels",
-                "prefix": "attribute_geoprotection-",
-                "languages_cto": "contao/languages",
-                "languages_tx": ".tx"
-            },
-            "runonce": [
-                "runonce/runonce.php"
-            ]
-        },
-        "branch-alias": {
-            "dev-tng": "2.0.x-dev"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "branch-alias": {
+      "dev-tng": "2.0.x-dev"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
