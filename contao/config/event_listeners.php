@@ -17,11 +17,18 @@
 
 use MetaModels\Attribute\GeoProtection\AttributeTypeFactory;
 use MetaModels\Attribute\Events\CreateAttributeFactoryEvent;
+use MetaModels\DcGeneral\Events\Table\Attribute\GeoProtection\Subscriber;
+use MetaModels\Events\MetaModelsBootEvent;
 use MetaModels\Filter\Setting\Events\CreateFilterSettingFactoryEvent;
 use MetaModels\Filter\Setting\GeoProtectionFilterSettingTypeFactory;
 use MetaModels\MetaModelsEvents;
 
 return array(
+    MetaModelsEvents::SUBSYSTEM_BOOT_BACKEND => array(
+        function (MetaModelsBootEvent $event) {
+            new Subscriber($event->getServiceContainer());
+        }
+    ),
     MetaModelsEvents::FILTER_SETTING_FACTORY_CREATE => array(
         function (CreateFilterSettingFactoryEvent $event) {
             $event->getFactory()->addTypeFactory(new GeoProtectionFilterSettingTypeFactory());
