@@ -30,24 +30,17 @@
     "irc": "irc://irc.freenode.org/contao.mm",
     "source": "https://github.com/MetaModels/attribute_geoprotection"
   },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://legacy-packages-via.contao-community-alliance.org/"
-    }
-  ],
   "require": {
     "php": ">=5.3",
-    "contao/core": ">=2.11,<4.0",
+    "contao/core": ">=3.2,<3.5",
     "contao-community-alliance/composer-plugin": "~2.0",
-    "metamodels/core": "~2.0.0",
+    "metamodels/core": "~2.0",
     "menatwork/geoprotection": "1.*"
   },
   "require-dev": {
-    "metamodels/php-coding-standard": "~2.0",
-    "cyberspectrum/contao-toolbox": "dev-master",
-    "contao-community-alliance/build-system": "~1.0",
-    "phpunit/phpunit": ">=3.7.10,<4-dev"
+    "cyberspectrum/contao-toolbox": "~0.6",
+    "phpcq/all-tasks": "~1.0",
+    "metamodels/base-unit-tests": "~1.0"
   },
   "conflict": {
     "contao/core": "3.0.*"
