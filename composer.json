@@ -1,5 +1,5 @@
 {
-  "name": "metamodels/attribute_geoprotection",
+  "name": "designs2/attribute_geoprotection",
   "description": "MetaModels attribute for geo tracking and configuration",
   "keywords": [
     "contao",
@@ -28,19 +28,19 @@
     "issues": "https://github.com/MetaModels/attribute_geoprotection/issues",
     "wiki": "http://de.contaowiki.org/MetaModels",
     "irc": "irc://irc.freenode.org/contao.mm",
-    "source": "https://github.com/MetaModels/attribute_geoprotection"
+    "source": "https://github.com/designs2/attribute_geoprotection"
   },
   "require": {
     "php": ">=5.3",
     "contao/core": ">=3.2,<3.6",
-    "contao-community-alliance/composer-plugin": "~2.0",
-    "metamodels/core": "~2.0",
+    "contao-community-alliance/composer-plugin": "*",
+    "designs2/core": "*",
     "menatwork/geoprotection": "1.*"
   },
   "require-dev": {
-    "cyberspectrum/contao-toolbox": "~0.6",
-    "phpcq/all-tasks": "~1.0",
-    "metamodels/base-unit-tests": "~1.0"
+    "cyberspectrum/contao-toolbox": "*",
+    "phpcq/all-tasks": "*",
+    "metamodels/base-unit-tests": "*"
   },
   "conflict": {
     "contao/core": "3.4.0"
